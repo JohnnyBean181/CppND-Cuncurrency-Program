@@ -14,7 +14,7 @@ T MessageQueue<T>::receive()
         
     // perform queue modification under the lock
     std::unique_lock<std::mutex> uLock(_mutex);
-    _cond.wait(uLock, [this] { return !_queue.empty(); }); // pass unique lock to condition variable
+    _condition.wait(uLock); // pass unique lock to condition variable
 
     // remove last TrafficLight from queue
     T msg = std::move(_queue.back());
@@ -29,16 +29,14 @@ void MessageQueue<T>::send(T &&msg)
 {
     // FP.4a : The method send should use the mechanisms std::lock_guard<std::mutex> 
     // as well as _condition.notify_one() to add a new message to the queue and afterwards send a notification.
-    // simulate some work
-    std::this_thread::sleep_for(std::chrono::milliseconds(100));
 
     // perform queue modification under the lock
     std::lock_guard<std::mutex> uLock(_mutex);
 
     // add new TrafficLight to queue
-    std::cout << "TrafficLight #" << msg << " will be added to the queue" << std::endl;
+    // std::cout << "TrafficLight #" << msg << " will be added to the queue" << std::endl;
     _queue.push_back(std::move(msg));
-    _cond.notify_one(); // notify client after pushing new TrafficLight into vector
+    _condition.notify_one(); // notify client after pushing new TrafficLight into vector
 }
 
 /* Function of getting random time*/
@@ -55,7 +53,6 @@ int getCycleTime()
 TrafficLight::TrafficLight()
 {
     _currentPhase = TrafficLightPhase::red;
-    _msgQueue = std::make_unique<MessageQueue<TrafficLightPhase>>();
 }
 
 void TrafficLight::waitForGreen()
@@ -65,11 +62,14 @@ void TrafficLight::waitForGreen()
     // Once it receives TrafficLightPhase::green, the method returns.
     while(true)
     {
-        std::this_thread::sleep_for(std::chrono::milliseconds(1));
-
-        auto msg = _msgQueue->receive();
+        // std::this_thread::sleep_for(std::chrono::milliseconds(1));
+        
+        std::cout << "Current TrafficLight #" << _id << "'s light is " << getCurrentPhase() << "." << std::endl;
+        auto msg = _msgQueue.receive();
+        std::cout << "Received message is " << msg << std::endl;
         if (msg == TrafficLightPhase::green)
         {
+            std::cout << "Current TrafficLight #" << _id << "'s light is " << getCurrentPhase() << "." << std::endl;
             return;
         }
     }
@@ -119,10 +119,11 @@ void TrafficLight::cycleThroughPhases()
             
             // toggle the current phase of the traffice light
             auto nextPhase = (getCurrentPhase() == TrafficLightPhase::red)? TrafficLightPhase::green : TrafficLightPhase::red;
+            std::cout << "TrafficLight #" << _id << " will be set as " << nextPhase << std::endl;
             _currentPhase = nextPhase;
 
             // send an update method to the message queue.
-            _msgQueue->send(std::move(nextPhase));
+            _msgQueue.send(std::move(nextPhase));
         }
     }
 
