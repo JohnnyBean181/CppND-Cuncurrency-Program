@@ -209,4 +209,7 @@ CMakeFiles/traffic_simulation.dir/src/Intersection.cpp.o: \
  /usr/include/c++/11/backward/auto_ptr.h \
  /usr/include/c++/11/pstl/glue_memory_defs.h \
  /home/johnnybean/Documents/UDacity/C++/CppND-Cuncurrency-Program-1/src/Intersection.h \
+ /home/johnnybean/Documents/UDacity/C++/CppND-Cuncurrency-Program-1/src/TrafficLight.h \
+ /usr/include/c++/11/deque /usr/include/c++/11/bits/stl_deque.h \
+ /usr/include/c++/11/bits/deque.tcc \
  /home/johnnybean/Documents/UDacity/C++/CppND-Cuncurrency-Program-1/src/Vehicle.h
