@@ -577,7 +577,6 @@ CMakeFiles/traffic_simulation.dir/src/Intersection.cpp.o: ../src/Intersection.cp
   /usr/include/c++/11/pstl/execution_defs.h \
   ../src/Street.h \
   ../src/TrafficObject.h \
-  ../src/Intersection.h \
   /usr/include/c++/11/memory \
   /usr/include/c++/11/bits/stl_tempbuf.h \
   /usr/include/c++/11/bits/stl_raw_storage_iter.h \
@@ -585,6 +584,7 @@ CMakeFiles/traffic_simulation.dir/src/Intersection.cpp.o: ../src/Intersection.cp
   /usr/include/c++/11/bits/shared_ptr_atomic.h \
   /usr/include/c++/11/backward/auto_ptr.h \
   /usr/include/c++/11/pstl/glue_memory_defs.h \
+  ../src/Intersection.h \
   ../src/Vehicle.h
 
 CMakeFiles/traffic_simulation.dir/src/Street.cpp.o: ../src/Street.cpp \
@@ -1852,26 +1852,26 @@ CMakeFiles/traffic_simulation.dir/src/Vehicle.cpp.o: ../src/Vehicle.cpp \
   /usr/include/c++/11/mutex \
   /usr/include/c++/11/bits/std_mutex.h \
   /usr/include/c++/11/bits/unique_lock.h \
-  ../src/Intersection.h \
-  /usr/include/c++/11/future \
-  /usr/include/c++/11/condition_variable \
+  /usr/include/c++/11/memory \
+  /usr/include/c++/11/bits/stl_tempbuf.h \
+  /usr/include/c++/11/bits/stl_raw_storage_iter.h \
+  /usr/include/c++/11/bits/align.h \
   /usr/include/c++/11/bits/shared_ptr.h \
   /usr/include/c++/11/bits/shared_ptr_base.h \
   /usr/include/c++/11/bits/allocated_ptr.h \
   /usr/include/c++/11/ext/aligned_buffer.h \
   /usr/include/c++/11/ext/concurrence.h \
-  /usr/include/c++/11/atomic \
+  /usr/include/c++/11/bits/shared_ptr_atomic.h \
   /usr/include/c++/11/bits/atomic_base.h \
   /usr/include/c++/11/bits/atomic_lockfree_defines.h \
-  /usr/include/c++/11/bits/atomic_futex.h \
-  /usr/include/c++/11/bits/std_function.h \
-  /usr/include/c++/11/memory \
-  /usr/include/c++/11/bits/stl_tempbuf.h \
-  /usr/include/c++/11/bits/stl_raw_storage_iter.h \
-  /usr/include/c++/11/bits/align.h \
-  /usr/include/c++/11/bits/shared_ptr_atomic.h \
   /usr/include/c++/11/backward/auto_ptr.h \
   /usr/include/c++/11/pstl/glue_memory_defs.h \
+  ../src/Intersection.h \
+  /usr/include/c++/11/future \
+  /usr/include/c++/11/condition_variable \
+  /usr/include/c++/11/atomic \
+  /usr/include/c++/11/bits/atomic_futex.h \
+  /usr/include/c++/11/bits/std_function.h \
   ../src/Vehicle.h
 
 
